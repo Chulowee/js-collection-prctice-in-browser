@@ -1,5 +1,15 @@
 'use strict';
 
 function countSameElements(collection) {
-  return 'Implement the practice require, and begin changing code in this row';
+  var sameElements= [];
+
+  collection.forEach(element => {
+    let elementExists = sameElements.find(coll => coll.key == element);
+    if (elementExists) {
+      elementExists.count++;
+   } else {
+    sameElements.push({ key: element, count: 1 }); }
+  });
+  
+  return sameElements;
 }
