@@ -1,15 +1,14 @@
 'use strict';
 
 function countSameElements(collection) {
-  var sameElements= [];
+   const uniqueLetters = Array.from(new Set(collection));
 
-  collection.forEach(element => {
-    let elementExists = sameElements.find(coll => coll.key == element);
-    if (elementExists) {
-      elementExists.count++;
-   } else {
-    sameElements.push({ key: element, count: 1 }); }
-  });
-  
-  return sameElements;
+  return uniqueLetters
+    .map(uniqueLetter=>({key: uniqueLetter, count: count(uniqueLetter, collection)}));
+}
+
+function count(uniqueLetter, collection){
+  return collection
+    .filter(element=>element===uniqueLetter)
+    .length;
 }
